@@ -13,7 +13,7 @@ function Home() {
       {/* Search */}
       <Search />
       {/* Intro post */}
-
+      <IntroPost />
       {/* Blogs */}
 
       {/* Footer */}
