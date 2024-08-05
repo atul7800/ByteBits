@@ -1,21 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GlobalAPI from "../services/GlobalAPI";
 
-function IntroPost() {
-  useEffect(() => {
-    getPost();
-  }, []);
-
-  const getPost = () => {
-    GlobalAPI.getPost.then((res) => {
-      // const { data } = res.data;
-      const descriptionContent = res.data.data[0].attributes.description;
-      console.log(descriptionContent);
-      // descriptionContent.map((block, index));
+function IntroPost({ description }) {
+  const renderContent = (contentData) => {
+    return contentData.map((block, index) => {
+      if (block.type === "paragraph") {
+        return (
+          <p key={index}>
+            {block.children.map((child, childIndex) => {
+              if (child.type === "text") {
+                return (
+                  <span
+                    key={childIndex}
+                    style={{ fontWeight: child.bold ? "bold" : "" }}
+                  >
+                    {child.text}
+                  </span>
+                );
+              }
+              return null;
+            })}
+          </p>
+        );
+      }
+      return null;
     });
   };
 
-  return <div>Intro post</div>;
+  return (
+    <div>
+      Intro post
+      {renderContent(description)}
+    </div>
+  );
 }
 
 export default IntroPost;
