@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from "react";
-import GlobalAPI from "../services/GlobalAPI";
 import Header from "../components/Header";
 import Search from "../components/Search";
 import IntroPost from "../components/IntroPost";
 import Blogs from "../components/Blogs";
 import Footer from "../components/Footer";
+import GlobalAPI from "../services/GlobalAPI";
 
 function Home() {
-  const [description, setDescription] = useState([]);
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
-    getPost();
+    getPosts();
   }, []);
 
-  const getPost = () => {
+  const getPosts = () => {
     GlobalAPI.getPost.then((res) => {
-      const descriptionContent = res.data.data[0].attributes.description;
-      console.log(res.data.data[0].attributes);
-      setDescription(descriptionContent);
+      //const descriptionContent = res.data.data[0].attributes.description;
+      //console.log(res.data.data);
+      const result = res.data.data.map((item) => ({
+        id: item.id,
+        title: item.attributes.title,
+        desc: item.attributes.description,
+        tags: item.attributes.tags,
+        cImage: item.attributes.coverImage.data.attributes.url,
+      }));
+      setPosts(result);
     });
   };
 
@@ -27,9 +34,8 @@ function Home() {
       {/* Search */}
       <Search />
       {/* Intro post */}
-      <IntroPost description={description} />
+      {posts.length > 0 ? <IntroPost posts={posts[0]} /> : null}
       {/* Blogs */}
-
       {/* Footer */}
     </div>
   );

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import GlobalAPI from "../services/GlobalAPI";
 
-function IntroPost({ description }) {
-  const renderContent = (contentData) => {
-    return contentData.map((block, index) => {
+function IntroPost({ posts }) {
+  console.log(posts);
+  const renderContent = (descriptionContent) => {
+    return descriptionContent.map((block, index) => {
       if (block.type === "paragraph") {
         return (
           <p key={index}>
@@ -29,8 +29,11 @@ function IntroPost({ description }) {
 
   return (
     <div>
-      Intro post
-      {renderContent(description)}
+      <h4>{posts.tags}</h4>
+      <h2 className="bold text-xl" style={{ fontWeight: "bold" }}>
+        {posts.title}
+      </h2>
+      {renderContent(posts.desc)}
     </div>
   );
 }
