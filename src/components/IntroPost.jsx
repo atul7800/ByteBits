@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import GlobalAPI from "../services/GlobalAPI";
+import React from "react";
 import pp1 from "../assets/images/pp1.jpg";
 
 function IntroPost({ posts }) {
@@ -8,7 +7,7 @@ function IntroPost({ posts }) {
     return descriptionContent.map((block, index) => {
       if (block.type === "paragraph") {
         return (
-          <p key={index} className="line-clamp-5 text-gray-500">
+          <p key={index} className="line-clamp-5 text-gray-600">
             {block.children.map((child, childIndex) => {
               if (child.type === "text") {
                 return (
@@ -45,10 +44,14 @@ function IntroPost({ posts }) {
           {posts.title}
         </h2>
         {renderContent(posts.desc)}
-        <div>
-          <img className="w-[50px] rounded-full" src={pp1} alt="Profile pic" />
+        <div className="mt-5 flex items-center">
+          <img
+            className="h-[50px] w-[50px] rounded-full"
+            src={pp1}
+            alt="Profile pic"
+          />
           <div className="ml-2">
-            <h3 className="font-bold">Mark colin</h3>
+            <h3 className="font-bold">Mark Colin</h3>
             <h3 className="text-gray-400">25 Feb 2024</h3>
           </div>
         </div>

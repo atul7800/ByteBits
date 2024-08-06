@@ -36,6 +36,7 @@ function Home() {
       {/* Intro post */}
       {posts.length > 0 ? <IntroPost posts={posts[0]} /> : null}
       {/* Blogs */}
+      {posts.length > 0 ? <Blogs posts={posts} /> : "No posts"}
       {/* Footer */}
     </div>
   );
