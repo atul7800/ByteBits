@@ -29,7 +29,7 @@ function Search() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="mt-8 flex flex-col justify-center lg:px-[150px]">
+    <div className="mt-8 flex flex-col justify-center md:px-[25px] lg:px-[100px]">
       <img className="rounded-2xl" src={banner} alt="banner img" />
       <div className="mx-[10%] mt-[-25px] flex items-center justify-between gap-2 rounded-lg bg-white p-3 text-[20px] shadow-lg md:mx-[20%]">
         <input className="outline-none" type="text" placeholder="Search" />

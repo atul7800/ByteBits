@@ -15,4 +15,5 @@ const getPost = api.get("/blogs?populate=*");
 
 export default {
   getPost,
+  BASE_URL,
 };

@@ -21,7 +21,7 @@ function Home() {
         title: item.attributes.title,
         desc: item.attributes.description,
         tags: item.attributes.tags,
-        cImage: item.attributes.coverImage.data.attributes.url,
+        coverImg: item.attributes.coverImage.data.attributes.url,
       }));
       setPosts(result);
     });
