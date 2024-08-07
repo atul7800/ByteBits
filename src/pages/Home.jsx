@@ -38,6 +38,7 @@ function Home() {
       {/* Blogs */}
       {posts.length > 0 ? <Blogs posts={posts} /> : "No posts"}
       {/* Footer */}
+      <Footer />
     </div>
   );
 }

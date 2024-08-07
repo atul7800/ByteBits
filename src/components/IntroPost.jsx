@@ -31,7 +31,7 @@ function IntroPost({ posts }) {
   return (
     <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 md:px-[25px] lg:px-[0px]">
       <img
-        className="h-full w-full rounded-xl object-cover"
+        className="h-full w-full rounded-2xl object-cover"
         src={imageURL}
         alt=""
       />
@@ -51,8 +51,8 @@ function IntroPost({ posts }) {
             alt="Profile pic"
           />
           <div className="ml-2">
-            <h3 className="font-bold">Mark Colin</h3>
-            <h3 className="text-gray-400">25 Feb 2024</h3>
+            <h3 className="text-[16px] font-bold">Mark Colin</h3>
+            <h3 className="text-[14px] text-gray-400">25 Feb 2024</h3>
           </div>
         </div>
       </div>

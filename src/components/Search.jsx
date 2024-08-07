@@ -41,7 +41,7 @@ function Search() {
         {tags.map((item, index) => (
           <ul
             onClick={() => setActiveIndex(index)}
-            className={`${index === activeIndex ? "bg-red-500 text-white" : null} ${index !== activeIndex ? "hover:scale-110 hover:border-[1px] hover:bg-white" : null} cursor-pointer rounded-lg border-red-500 p-2 px-3 transition-all duration-100 ease-in-out md:rounded-full md:px-4`}
+            className={`${index === activeIndex ? "bg-red-500 text-white" : null} ${index !== activeIndex ? "hover:scale-110 hover:border-[1px] hover:bg-white" : null} flex cursor-pointer items-center justify-center rounded-lg border-red-500 p-2 px-3 text-center transition-all duration-100 ease-in-out md:rounded-full md:px-4`}
             key={index}
           >
             <li>{item.name}</li>
