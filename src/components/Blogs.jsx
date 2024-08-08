@@ -1,4 +1,6 @@
 import React from "react";
+import Markdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
 import pp1 from "../assets/images/pp1.jpg";
 import { useNavigate } from "react-router-dom";
 import RenderDescription from "./RenderDescription";
@@ -31,10 +33,14 @@ function Blogs({ posts }) {
                 {post.title}
               </h2>
               {/* {renderContent(post.desc)} */}
-              <RenderDescription
+              {/* <RenderDescription
                 descriptionContent={post.desc}
                 lineClamp={"line-clamp-4"}
-              />
+              /> */}
+              <Markdown className="line-clamp-4 leading-7">
+                {post.desc}
+              </Markdown>
+
               <div className="mt-5 flex items-center">
                 <img
                   className="h-[35px] w-[35px] rounded-full"

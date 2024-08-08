@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Markdown from "react-markdown";
 import GlobalAPI from "../services/GlobalAPI";
 import pp1 from "../assets/images/pp1.jpg";
 import RenderDescription from "./RenderDescription";
@@ -86,8 +87,9 @@ function BlogDetail() {
               >
                 {post.title}
               </h2>
-              {/* {renderContent(post.desc)} */}
-              <RenderDescription descriptionContent={post.desc} />
+
+              {/* <RenderDescription descriptionContent={post.desc} /> */}
+              <Markdown className="leading-7">{post.desc}</Markdown>
               <div className="mt-10 flex items-center">
                 <img
                   className="h-[50px] w-[50px] rounded-full"
