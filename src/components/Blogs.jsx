@@ -1,7 +1,9 @@
 import React from "react";
 import pp1 from "../assets/images/pp1.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Blogs({ posts }) {
+  const navigate = useNavigate();
   const baseURL = "http://localhost:1337";
   const renderContent = (descriptionContent) => {
     return descriptionContent.map((block, index) => {
@@ -30,8 +32,12 @@ function Blogs({ posts }) {
 
   return (
     <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 md:px-[25px] lg:grid-cols-3 lg:px-[0px]">
-      {posts.map((post, index) => (
-        <div key={index} className="flex flex-col items-center justify-center">
+      {posts.map((post) => (
+        <div
+          onClick={() => navigate("blog-detail/" + post.id)}
+          key={post.id}
+          className="flex cursor-pointer flex-col items-center justify-center"
+        >
           <img
             className="h-full w-full rounded-3xl object-cover"
             src={baseURL + post.coverImg}

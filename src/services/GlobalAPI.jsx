@@ -12,8 +12,10 @@ const api = axios.create({
 });
 
 const getPost = api.get("/blogs?populate=*");
+const getPostsByID = (id) => api.get("/blogs/" + id + "?populate=*");
 
 export default {
   getPost,
+  getPostsByID,
   BASE_URL,
 };

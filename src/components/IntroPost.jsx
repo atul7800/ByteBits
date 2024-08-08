@@ -1,7 +1,9 @@
 import React from "react";
 import pp1 from "../assets/images/pp1.jpg";
+import { useNavigate } from "react-router-dom";
 
 function IntroPost({ posts }) {
+  const navigate = useNavigate();
   const imageURL = "http://localhost:1337" + posts.coverImg;
   const renderContent = (descriptionContent) => {
     return descriptionContent.map((block, index) => {
@@ -29,7 +31,10 @@ function IntroPost({ posts }) {
   };
 
   return (
-    <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 md:px-[25px] lg:px-[0px]">
+    <div
+      onClick={() => navigate("blog-detail/" + posts.id)}
+      className="mt-12 grid cursor-pointer grid-cols-1 gap-8 md:grid-cols-2 md:px-[25px] lg:px-[0px]"
+    >
       <img
         className="h-full w-full rounded-2xl object-cover"
         src={imageURL}

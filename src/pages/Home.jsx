@@ -23,14 +23,13 @@ function Home() {
         tags: item.attributes.tags,
         coverImg: item.attributes.coverImage.data.attributes.url,
       }));
+
       setPosts(result);
     });
   };
 
   return (
     <div>
-      {/* header */}
-      <Header />
       {/* Search */}
       <Search />
       {/* Intro post */}
