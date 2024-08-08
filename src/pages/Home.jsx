@@ -5,6 +5,8 @@ import IntroPost from "../components/IntroPost";
 import Blogs from "../components/Blogs";
 import Footer from "../components/Footer";
 import GlobalAPI from "../services/GlobalAPI";
+import IntroPostShimmer from "../shimmers/IntroPostShimmer";
+import BlogsShimmer from "../shimmers/BlogsShimmer";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -33,9 +35,9 @@ function Home() {
       {/* Search */}
       <Search />
       {/* Intro post */}
-      {posts.length > 0 ? <IntroPost posts={posts[0]} /> : null}
+      {posts.length > 0 ? <IntroPost posts={posts[0]} /> : <IntroPostShimmer />}
       {/* Blogs */}
-      {posts.length > 0 ? <Blogs posts={posts} /> : "No posts"}
+      {posts.length > 0 ? <Blogs posts={posts} /> : <BlogsShimmer />}
       {/* Footer */}
       <Footer />
     </div>

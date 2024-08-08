@@ -41,5 +41,35 @@
 }
 
 
-/* 8/6/24 */
-@media only screen and (max-width:1024px){}
+/* 8/8/24 */
+.shimmer{
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 3px;
+}
+
+.shimmer-wrapper {
+ 
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(0, 0%, 90%);
+  }
+
+  100% {
+    background-color: hsl(0, 0%, 70%);
+  }
+
+}
+
+
+/* .shimmer-container{
+  display: flex;
+  overflow: visible;
+}
+
+@media only screen and (min-width:768px){
+  .shimmer-container{
+    flex-direction: row;
+  }
+} */

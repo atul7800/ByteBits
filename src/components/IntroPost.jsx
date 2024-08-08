@@ -1,34 +1,11 @@
 import React from "react";
 import pp1 from "../assets/images/pp1.jpg";
 import { useNavigate } from "react-router-dom";
+import RenderDescription from "./RenderDescription";
 
 function IntroPost({ posts }) {
   const navigate = useNavigate();
   const imageURL = "http://localhost:1337" + posts.coverImg;
-  const renderContent = (descriptionContent) => {
-    return descriptionContent.map((block, index) => {
-      if (block.type === "paragraph") {
-        return (
-          <p key={index} className="line-clamp-5 text-gray-600">
-            {block.children.map((child, childIndex) => {
-              if (child.type === "text") {
-                return (
-                  <span
-                    key={childIndex}
-                    style={{ fontWeight: child.bold ? "bold" : "" }}
-                  >
-                    {child.text}
-                  </span>
-                );
-              }
-              return null;
-            })}
-          </p>
-        );
-      }
-      return null;
-    });
-  };
 
   return (
     <div
@@ -48,7 +25,11 @@ function IntroPost({ posts }) {
         >
           {posts.title}
         </h2>
-        {renderContent(posts.desc)}
+        {/* {renderContent(posts.desc)} */}
+        <RenderDescription
+          descriptionContent={posts.desc}
+          lineClamp={"line-clamp-4"}
+        />
         <div className="mt-5 flex items-center">
           <img
             className="h-[50px] w-[50px] rounded-full"

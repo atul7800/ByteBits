@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
 import BlogDetail from "./components/BlogDetail";
+import IntroPostShimmer from "./shimmers/IntroPostShimmer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +12,7 @@ function App() {
   return (
     <div>
       <Header />
+      {/* <IntroPostShimmer /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog-detail/:id" element={<BlogDetail />} />
