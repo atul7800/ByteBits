@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Markdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import remarkEmoji from "remark-emoji";
 import GlobalAPI from "../services/GlobalAPI";
 import pp1 from "../assets/images/pp1.jpg";
 import RenderDescription from "./RenderDescription";
@@ -89,7 +92,12 @@ function BlogDetail() {
               </h2>
 
               {/* <RenderDescription descriptionContent={post.desc} /> */}
-              <Markdown className="leading-7">{post.desc}</Markdown>
+              <ReactMarkdown
+                className="markDown leading-7"
+                children={post.desc}
+                remarkPlugins={[remarkGfm, remarkEmoji]}
+                rehypePlugins={[rehypeRaw]}
+              />
               <div className="mt-10 flex items-center">
                 <img
                   className="h-[50px] w-[50px] rounded-full"

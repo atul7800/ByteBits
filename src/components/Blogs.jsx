@@ -1,6 +1,8 @@
 import React from "react";
-import Markdown from "react-markdown";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import remarkEmoji from "remark-emoji";
 import pp1 from "../assets/images/pp1.jpg";
 import { useNavigate } from "react-router-dom";
 import RenderDescription from "./RenderDescription";
@@ -17,29 +19,31 @@ function Blogs({ posts }) {
           <div
             onClick={() => navigate("blog-detail/" + post.id)}
             key={post.id}
-            className="flex cursor-pointer flex-col items-center justify-center"
+            className="flex cursor-pointer flex-col items-center justify-start"
           >
             <img
-              className="h-full w-full rounded-3xl object-cover"
+              className="blogs-img h-full w-full rounded-3xl object-cover"
               src={baseURL + post.coverImg}
               alt="Image not found"
             />
             <div>
               <h4 className="mt-2 text-red-500">{post.tags}</h4>
               <h2
-                className="line mt-2 text-[25px] font-bold leading-[1.2]"
+                className="line mt-2 text-[25px] font-bold leading-8"
                 style={{ fontWeight: "bold" }}
               >
                 {post.title}
               </h2>
-              {/* {renderContent(post.desc)} */}
               {/* <RenderDescription
                 descriptionContent={post.desc}
                 lineClamp={"line-clamp-4"}
               /> */}
-              <Markdown className="line-clamp-4 leading-7">
-                {post.desc}
-              </Markdown>
+              <ReactMarkdown
+                className="markDown line-clamp-4 leading-7"
+                children={post.desc}
+                remarkPlugins={[remarkGfm, remarkEmoji]}
+                rehypePlugins={[rehypeRaw]}
+              />
 
               <div className="mt-5 flex items-center">
                 <img
