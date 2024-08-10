@@ -28,7 +28,7 @@ function IntroPost({ posts }) {
 
   return (
     <div
-      style={{ display: isVisible ? "block" : "none" }}
+      style={{ display: isVisible ? "grid" : "none" }}
       onClick={() => navigate("blog-detail/" + posts.id)}
       className="mt-12 grid cursor-pointer grid-cols-1 gap-8 md:grid-cols-2 md:px-[25px] lg:px-[0px]"
     >

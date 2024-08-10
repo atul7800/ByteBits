@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import banner from "../assets/images/banner.jpg";
 
-function Search() {
+function Search({ setSelectedTag }) {
   const tags = [
     {
       id: 1,
@@ -22,7 +22,11 @@ function Search() {
     },
     {
       id: 5,
-      name: "UI/UX",
+      name: "C",
+    },
+    {
+      id: 6,
+      name: "C++",
     },
   ];
 
@@ -40,7 +44,10 @@ function Search() {
       <div className="mt-8 flex justify-center gap-5 sm:gap-10">
         {tags.map((item, index) => (
           <ul
-            onClick={() => setActiveIndex(index)}
+            onClick={() => {
+              setActiveIndex(index);
+              setSelectedTag(item.name);
+            }}
             className={`${index === activeIndex ? "bg-red-500 text-white" : null} ${index !== activeIndex ? "hover:scale-110 hover:border-[1px] hover:bg-white" : null} flex cursor-pointer items-center justify-center rounded-lg border-red-500 p-2 px-3 text-center transition-all duration-100 ease-in-out md:rounded-full md:px-4`}
             key={index}
           >

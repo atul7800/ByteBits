@@ -77,11 +77,6 @@ function BlogDetail() {
         imageURL != null ||
         imageURL != undefined ? (
           <>
-            <img
-              className="h-full max-h-[450px] w-full rounded-2xl object-cover"
-              src={imageURL}
-              alt="Asset loading"
-            />
             <div>
               <h4 className="text-red-500">{post.tags}</h4>
               <h2
@@ -90,15 +85,7 @@ function BlogDetail() {
               >
                 {post.title}
               </h2>
-
-              {/* <RenderDescription descriptionContent={post.desc} /> */}
-              <ReactMarkdown
-                className="markDown leading-7"
-                children={post.desc}
-                remarkPlugins={[remarkGfm, remarkEmoji]}
-                rehypePlugins={[rehypeRaw]}
-              />
-              <div className="mt-10 flex items-center">
+              <div className="mt-3 flex items-center">
                 <img
                   className="h-[50px] w-[50px] rounded-full"
                   src={pp1}
@@ -109,6 +96,20 @@ function BlogDetail() {
                   <h3 className="text-[14px] text-gray-400">25 Feb 2024</h3>
                 </div>
               </div>
+            </div>
+            <div>
+              <img
+                className="mb-6 h-full max-h-[450px] w-full rounded-2xl object-cover"
+                src={imageURL}
+                alt="Asset loading"
+              />
+              {/* <RenderDescription descriptionContent={post.desc} /> */}
+              <ReactMarkdown
+                className="markDown leading-7"
+                children={post.desc}
+                remarkPlugins={[remarkGfm, remarkEmoji]}
+                rehypePlugins={[rehypeRaw]}
+              />
             </div>
           </>
         ) : (

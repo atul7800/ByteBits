@@ -10,14 +10,15 @@ import BlogsShimmer from "../shimmers/BlogsShimmer";
 
 function Home() {
   const [posts, setPosts] = useState([]);
+  const [selectedTag, setSelectedTag] = useState("All");
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [showNoResults, setShowNoResults] = useState(false);
   useEffect(() => {
     getPosts();
   }, []);
 
   const getPosts = () => {
     GlobalAPI.getPost.then((res) => {
-      //const descriptionContent = res.data.data[0].attributes.description;
-      //console.log(res.data.data);
       const result = res.data.data.map((item) => ({
         id: item.id,
         title: item.attributes.title,
@@ -27,19 +28,49 @@ function Home() {
       }));
 
       setPosts(result);
+      setFilteredPosts(result);
     });
+  };
+
+  const filterPosts = (tag) => {
+    const filteredResult = filteredPosts.filter((item) =>
+      item.tags.toLowerCase().includes(tag.toLowerCase()),
+    );
+    if (tag === "All") {
+      setPosts(filteredPosts);
+      setShowNoResults(false);
+      return;
+    }
+
+    if (filteredResult.length == 0) {
+      setShowNoResults(true);
+      return;
+    }
+
+    if (filteredResult.length > 0) {
+      setShowNoResults(false);
+      setPosts(filteredResult);
+    }
   };
 
   return (
     <div>
       {/* Search */}
-      <Search />
+      <Search setSelectedTag={(tag) => filterPosts(tag)} />
       {/* Intro post */}
-      {posts.length > 0 ? <IntroPost posts={posts[0]} /> : <IntroPostShimmer />}
-      {/* Blogs */}
-      {posts.length > 0 ? <Blogs posts={posts} /> : <BlogsShimmer />}
-      {/* Footer */}
-      <Footer />
+      {showNoResults ? (
+        <h4 className="my-10 text-lg">No post found</h4>
+      ) : (
+        <>
+          {posts.length > 0 ? (
+            <IntroPost posts={posts[0]} />
+          ) : (
+            <IntroPostShimmer />
+          )}
+
+          {posts.length > 0 ? <Blogs posts={posts} /> : <BlogsShimmer />}
+        </>
+      )}
     </div>
   );
 }
