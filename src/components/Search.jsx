@@ -35,6 +35,7 @@ function Search({ setSelectedTag }) {
 
   const handleSearch = () => {
     setSelectedTag(searchInputValue);
+    console.log(searchInputValue);
   };
 
   // useEffect(() => {

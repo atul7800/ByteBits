@@ -13,6 +13,7 @@ function Home() {
   const [selectedTag, setSelectedTag] = useState("all");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [showNoResults, setShowNoResults] = useState(false);
+  let escapedTag = null;
   useEffect(() => {
     getPosts();
   }, []);
@@ -33,7 +34,9 @@ function Home() {
   };
 
   const regex = (tag) => {
-    return new RegExp(`\\b${tag}\\b`, "i");
+    escapedTag = tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    return new RegExp(escapedTag, "i");
   };
 
   const filterPosts = (tag) => {
