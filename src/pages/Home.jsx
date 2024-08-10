@@ -10,10 +10,9 @@ import BlogsShimmer from "../shimmers/BlogsShimmer";
 
 function Home() {
   const [posts, setPosts] = useState([]);
-  const [selectedTag, setSelectedTag] = useState("All");
+  const [selectedTag, setSelectedTag] = useState("all");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [showNoResults, setShowNoResults] = useState(false);
-  const regex = new RegExp(`\\b${""}`);
   useEffect(() => {
     getPosts();
   }, []);
@@ -33,13 +32,16 @@ function Home() {
     });
   };
 
+  const regex = (tag) => {
+    return new RegExp(`\\b${tag}\\b`, "i");
+  };
+
   const filterPosts = (tag) => {
-    // Create a case-insensitive regular expression for the tag
-    const regex = new RegExp(`\\b${tag.toLowerCase()}\\b`, "i");
+    //const regex = new RegExp(`\\b${tag.toLowerCase()}\\b`, "i");
     const filteredResult = filteredPosts.filter((item) =>
-      regex.test(item.tags.toLowerCase()),
+      regex(tag.toLowerCase()).test(item.tags.toLowerCase()),
     );
-    if (tag === "All") {
+    if (tag.toLowerCase() === "all") {
       setPosts(filteredPosts);
       setShowNoResults(false);
       return;
@@ -62,7 +64,7 @@ function Home() {
       <Search setSelectedTag={(tag) => filterPosts(tag)} />
       {/* Intro post */}
       {showNoResults ? (
-        <h4 className="my-10 text-lg">No post found</h4>
+        <h4 className="my-12 text-center text-lg">No post found</h4>
       ) : (
         <>
           {posts.length > 0 ? (

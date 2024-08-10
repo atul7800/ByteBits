@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import banner from "../assets/images/banner.jpg";
 
@@ -31,13 +31,35 @@ function Search({ setSelectedTag }) {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [searchInputValue, setSearchInputValue] = useState("");
+
+  const handleSearch = () => {
+    setSelectedTag(searchInputValue);
+  };
+
+  // useEffect(() => {
+  //   console.log(searchInputValue);
+  // }, [searchInputValue]);
+
+  const handleOnChange = (e) => {
+    setSearchInputValue(e.target.value);
+  };
 
   return (
     <div className="mt-8 flex flex-col justify-center md:px-[25px] lg:px-[100px]">
       <img className="rounded-2xl" src={banner} alt="banner img" />
       <div className="mx-[10%] mt-[-25px] flex items-center justify-between gap-2 rounded-lg bg-white p-3 px-5 text-[20px] shadow-lg md:mx-[20%]">
-        <input className="outline-none" type="text" placeholder="Search" />
-        <CiSearch className="text-[22px] text-gray-500" />
+        <input
+          onChange={handleOnChange}
+          value={searchInputValue}
+          className="id outline-none"
+          type="text"
+          placeholder="Search"
+        />
+        <CiSearch
+          onClick={() => handleSearch()}
+          className="text-[22px] text-gray-500"
+        />
       </div>
 
       {/* filter options */}
