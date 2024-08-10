@@ -13,6 +13,7 @@ function Home() {
   const [selectedTag, setSelectedTag] = useState("All");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [showNoResults, setShowNoResults] = useState(false);
+  const regex = new RegExp(`\\b${""}`);
   useEffect(() => {
     getPosts();
   }, []);
@@ -33,8 +34,10 @@ function Home() {
   };
 
   const filterPosts = (tag) => {
+    // Create a case-insensitive regular expression for the tag
+    const regex = new RegExp(`\\b${tag.toLowerCase()}\\b`, "i");
     const filteredResult = filteredPosts.filter((item) =>
-      item.tags.toLowerCase().includes(tag.toLowerCase()),
+      regex.test(item.tags.toLowerCase()),
     );
     if (tag === "All") {
       setPosts(filteredPosts);
