@@ -10,7 +10,7 @@ function Header() {
     <div className="flex items-center justify-between">
       <img
         onClick={() => navigate("/")}
-        className="w-[180px]"
+        className="w-[180px] cursor-pointer"
         src={logo}
         alt="logo"
       />
