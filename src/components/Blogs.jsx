@@ -10,7 +10,7 @@ import BlogsShimmer from "../shimmers/BlogsShimmer";
 
 function Blogs({ posts }) {
   const navigate = useNavigate();
-  const baseURL = "http://localhost:1337";
+  const baseURL = import.meta.env.VITE_API_URL;
 
   return (
     <>

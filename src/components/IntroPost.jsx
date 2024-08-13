@@ -9,7 +9,9 @@ import RenderDescription from "./RenderDescription";
 
 function IntroPost({ posts }) {
   const navigate = useNavigate();
-  const imageURL = "http://localhost:1337" + posts.coverImg;
+  const base_url = import.meta.env.VITE_API_URL;
+  const imageURL = base_url + posts.coverImg;
+  console.log(imageURL);
   const [isVisible, setIsVisible] = useState(window.innerWidth > 640);
 
   useEffect(() => {
