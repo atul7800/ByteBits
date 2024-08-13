@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import banner from "../assets/images/banner.jpg";
+import banner from "../assets/images/banner.png";
 
 function Search({ setSelectedTag }) {
   const tags = [
