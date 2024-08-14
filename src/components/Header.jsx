@@ -8,6 +8,7 @@ function Header() {
   const navigate = useNavigate();
   return (
     <div className="flex items-center justify-between">
+      {/* Logo */}
       <img
         onClick={() => navigate("/")}
         className="w-[180px] cursor-pointer"
